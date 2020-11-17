@@ -16,16 +16,13 @@
         sudokuCore = new SudokuCore(),
         cellPosGroup = [],  //  保存每个单元格的{ x,y,x1,y1,isEditable }等信息
         sudoku = sudokuCore.createBlankCell(sudokuCore.initializeSudoku(), difficulty),
-        prevSudoku = [],
+        prevSudoku = copySudoku(sudoku, difficulty),
         currLevel = 0,
-        playTime = '00 : 00',
-        timerID;
-    
-    prevSudoku = copySudoku(sudoku, difficulty);
+        timerID,
+        startTime;
     
     if (ctx) {
         renderSudoku();
-        // console.log(sudoku)
 
         sudokuCanvas.addEventListener('click', function (e) {
             let offsetLeft = e.target.offsetLeft,
