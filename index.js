@@ -25,6 +25,7 @@
     
     if (ctx) {
         renderSudoku();
+        // console.log(sudoku)
 
         sudokuCanvas.addEventListener('click', function (e) {
             let offsetLeft = e.target.offsetLeft,
@@ -35,7 +36,7 @@
             for (let i = 0; i < LEN; i++) {
                 for (let j = 0; j < LEN; j++) {
                     let item = cellPosGroup[i][j];
-
+                    
                     if (clientX > item.x && clientY > item.y && clientX < item.x1 && clientY < item.y1 ) {
                         if (item.isEditable) {
                             let eleLeft = item.x + offsetLeft,
@@ -223,24 +224,18 @@
     }
     
     function drawSudoku() {
-        let rowCellPos = 0,
-            columnCellPos = 0,
-            baseRowCellPos = CELL_INFO / 2,
-            baseColumnCellPos = CELL_INFO / 2,
-            x = CELL_INFO, y = CELL_INFO;
-        
         cellPosGroup = [];
 
         for (let i = 0; i < LEN; i++) {
             let posGroup = [];
             for (let j = 0; j < LEN; j++) {
-                let item = sudoku[i][j];
-                ctx.fillText(item, baseRowCellPos + rowCellPos,  baseColumnCellPos + columnCellPos);
-                posGroup.push({ x: x * j, y: y * i, x1: x * j + CELL_INFO, y1: y * i + CELL_INFO, i, j, isEditable: typeof item !== 'number' ? true : false });
-                rowCellPos += CELL_INFO;
+                let item = sudoku[i][j],
+                    x = CELL_INFO * j,
+                    y = CELL_INFO * i;
+
+                ctx.fillText(item, (CELL_INFO / 2) + x,  (CELL_INFO / 2 + 2) + y);
+                posGroup.push({ x: CELL_INFO * j, y: CELL_INFO * i, x1: x + CELL_INFO, y1: y + CELL_INFO, isEditable: typeof item !== 'number' ? true : false });
             }
-            rowCellPos = 0;
-            columnCellPos += CELL_INFO;
             cellPosGroup.push(posGroup);
         }
     }
