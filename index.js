@@ -198,7 +198,7 @@
             if (!i) {
                 continue;
             } else {
-                if (i === 3 || i === 6) {
+                if (!(i % 3)) {
                     ctx.lineWidth = 2.5;
                 } else {
                     ctx.lineWidth = 1;
