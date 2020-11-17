@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas sudoku</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        input,
+        button {
+            outline: none;
+        }
+
+        .app {
+            margin: 0 auto;
+            padding-top: 20px;
+            width: 360px;
+            text-align: center;
+            color: #36f;
+            user-select: none;
+        }
+        .sudoku-wrap.s-done {
+            transition: transform .2s ease-out;
+            transform: scale(.98);
+        }
+        .sudoku-title {
+            margin-bottom: -1px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            line-height: 2;
+            text-align: center;
+            color: #36f;
+        }
+        #sudoku-canvas {
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        
+        .input-ele {
+            position: absolute;
+            border: 0;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            box-shadow: 0 0 10px #ccc;
+            transform: scale(1.15);
+            background-color: #fff;
+        }
+        .levels {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            width: 360px;
+            color: #333;
+        }
+        .levels li {
+            cursor: pointer;
+        }
+        .levels li.s-current {
+            font-weight: 700;
+            color: lightcoral;
+        }
+        .levels li.n-current {
+            opacity: .6;
+        }
+        .time {
+            margin: 10px 0;
+            width: 360px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .numbers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            width: 360px;
+            font-size: 18px;
+        }
+        .numbers .s-max {
+            text-decoration: line-through;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: transform .1s ease-out;
+        }
+        button:hover {
+            transform: scale(.98) translate(0, 1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="sudoku-wrap">
+            <div class="sudoku-title">Sudoku</div>
+            <canvas id="sudoku-canvas" width="358" height="358"></canvas>
+        </div>
+        <ul class="levels"></ul>
+        <div class="time"></div>
+        <div class="btn-container">
+            <button class="btn-reset-curr">重新此局</button>
+            <button class="btn-new-sudoku">新的一局</button>
+        </div>
+        <ul class="numbers"></ul>
+    </div>
+
+    <script src="./SudokuCore.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
