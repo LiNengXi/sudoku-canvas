@@ -237,10 +237,10 @@
                 let item = sudoku[i][j];
                 ctx.fillText(item, baseRowCellPos + rowCellPos,  baseColumnCellPos + columnCellPos);
                 posGroup.push({ x: x * j, y: y * i, x1: x * j + CELL_INFO, y1: y * i + CELL_INFO, i, j, isEditable: typeof item !== 'number' ? true : false });
-                rowCellPos += 40;
+                rowCellPos += CELL_INFO;
             }
             rowCellPos = 0;
-            columnCellPos += 40;
+            columnCellPos += CELL_INFO;
             cellPosGroup.push(posGroup);
         }
     }
