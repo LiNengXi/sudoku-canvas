@@ -194,23 +194,26 @@
         ctx.lineWidth = 1;
         ctx.strokeStyle = '#ccc';
         for (let i = 0; i < LEN; i++) {
-            if (i === 3 || i === 6) {
-                ctx.lineWidth = 2;
+            if (!i) {
+                continue;
             } else {
-                ctx.lineWidth = 1;
-            }
-            
-            ctx.beginPath();
-            ctx.moveTo(0, rowLinePos * i);
-            ctx.lineTo(360, rowLinePos * i);
-            ctx.stroke();
-            ctx.closePath();
+                if (i === 3 || i === 6) {
+                    ctx.lineWidth = 2.5;
+                } else {
+                    ctx.lineWidth = 1;
+                }
+                
+                ctx.beginPath();
 
-            ctx.beginPath();
-            ctx.moveTo(columnLinePos * i, 0);
-            ctx.lineTo(columnLinePos * i, 360);
-            ctx.stroke();
-            ctx.closePath();
+                ctx.moveTo(0, rowLinePos * i + .5);
+                ctx.lineTo(360, rowLinePos * i + .5);
+
+                ctx.moveTo(columnLinePos * i + .5, 0);
+                ctx.lineTo(columnLinePos * i + .5, 360);
+
+                ctx.stroke();
+                ctx.closePath();
+            }
         }
 
         ctx.font = '16px Microsoft yahei';
