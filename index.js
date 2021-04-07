@@ -15,7 +15,7 @@
     let difficulty = INITAL_DIFFICULTY,
         sudokuCore = new SudokuCore(),
         cellPosGroup = [],  //  保存每个单元格的{ x,y,x1,y1,isEditable }等信息
-        sudoku = sudokuCore.createBlankCell(sudokuCore.initializeSudoku(), difficulty),
+        sudoku = sudokuCore.createBlankCell(sudokuCore.renderSudoku(), difficulty),
         prevSudoku = copySudoku(sudoku, difficulty),
         currLevel = 0,
         timerID,
@@ -68,7 +68,7 @@
         }, false);
 
         btnNewSudoku.addEventListener('click', function () {
-            sudoku = sudokuCore.createBlankCell(sudokuCore.initializeSudoku(), difficulty);
+            sudoku = sudokuCore.createBlankCell(sudokuCore.renderSudoku(), difficulty);
             prevSudoku = copySudoku(sudoku, difficulty);
             renderSudoku();
         }, false);
